@@ -8,16 +8,17 @@ import { FormControl } from '@angular/forms';
 })
 export class GeneratorTableComponent implements OnInit {
   value = 'Clear me';
-  tabs = ['First', 'Second', 'Third'];
+  tabs = [{ title: 'First', editing: false }, { title: 'Second', editing: false }, { title: 'Third', editing: false }];
   selected = new FormControl(0);
+  editing = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   addTab() {
     console.log('addTab');
-    this.tabs.push('New');
+    this.tabs.push({ title: 'New', editing: false });
 
     this.selected.setValue(this.tabs.length - 1);
   }
@@ -25,5 +26,9 @@ export class GeneratorTableComponent implements OnInit {
   removeTab(index: number) {
 
     this.tabs.splice(index, 1);
+  }
+
+  editTab(index: number) {
+    this.tabs[index].editing = true;
   }
 }

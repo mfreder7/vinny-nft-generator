@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GeneratorModule, collectionGeneratorRoutes } from '@vinny/collection-generator';
@@ -9,9 +9,10 @@ import { GeneratorModule, collectionGeneratorRoutes } from '@vinny/collection-ge
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: '', pathMatch: 'full', redirectTo: 'generator' },{path: '', children: collectionGeneratorRoutes}], { initialNavigation: 'enabled' }),
+    BrowserAnimationsModule,
+    RouterModule.forRoot([{ path: '', pathMatch: 'full', redirectTo: 'generator' }, { path: '', children: collectionGeneratorRoutes }], { initialNavigation: 'enabled' }),
     GeneratorModule     // added
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
