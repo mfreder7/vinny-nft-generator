@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'vinny-collection-generator',
-  templateUrl: './collection-generator.component.html',
-  styleUrls: ['./collection-generator.component.scss'],
+  selector: 'vinny-generator-table',
+  templateUrl: './generator-table.component.html',
+  styleUrls: ['./generator-table.component.scss']
 })
-export class CollectionGeneratorComponent implements OnInit {
+export class GeneratorTableComponent implements OnInit {
+
   tabs = ['First', 'Second', 'Third'];
   selected = new FormControl(0);
 

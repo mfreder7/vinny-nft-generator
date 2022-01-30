@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@vinny/material';
-import { CollectionGeneratorComponent } from './collection-generator.component';
+import { GeneratorTableComponent } from './generator-table.component';
+
 
 @NgModule({
-  declarations: [CollectionGeneratorComponent],
+  declarations: [GeneratorTableComponent],
   imports: [BrowserModule, HttpClientModule,  MaterialModule ],
   providers: [],
-  exports: [CollectionGeneratorComponent],
+  exports: [GeneratorTableComponent],
 })
-export class CollectionGeneratorModule {}
+export class GeneratorTableModule {}

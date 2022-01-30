@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@vinny/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@vinny/collection-generator": ["libs/collection-generator/src/index.ts"],
       "@vinny/components": ["libs/components/src/index.ts"],
       "@vinny/material": ["libs/material/src/index.ts"]
     }

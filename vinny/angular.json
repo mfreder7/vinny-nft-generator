@@ -1,7 +1,4 @@
 {
-  "cli": {
-    "analytics": false
-  },
   "version": 1,
   "projects": {
     "api": {
@@ -21,7 +18,6 @@
           "configurations": {
             "production": {
               "optimization": true,
-              "preserveSymlinks": true,
               "extractLicenses": true,
               "inspect": false,
               "fileReplacements": [
@@ -36,7 +32,7 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "api:build",
+            "buildTarget": "api:build"
           }
         },
         "lint": {
@@ -67,6 +63,32 @@
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      },
+      "tags": []
+    },
+    "collection-generator": {
+      "projectType": "library",
+      "root": "libs/collection-generator",
+      "sourceRoot": "libs/collection-generator/src",
+      "prefix": "vinny",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/collection-generator"],
+          "options": {
+            "jestConfig": "libs/collection-generator/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/collection-generator/src/**/*.ts",
+              "libs/collection-generator/src/**/*.html"
+            ]
           }
         }
       },
@@ -205,7 +227,7 @@
               "browserTarget": "vinny:build:production"
             },
             "development": {
-              "browserTarget": "vinny:build:development",
+              "browserTarget": "vinny:build:development"
             }
           },
           "defaultConfiguration": "development",
