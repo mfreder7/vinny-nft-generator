@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TraitTypes } from '@vinny/api-interfaces';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'vinny-generator',
   templateUrl: './generator.component.html',
@@ -17,5 +18,9 @@ export class GeneratorComponent implements OnInit {
     this.traitTypes.push({ type: `Trait ${this.traitTypes.length + 1}`, traits: [] });
     console.log('Colection added.');
     console.log(this.traitTypes);
+  }
+
+  drop(event: CdkDragDrop<TraitTypes[]>) {
+    moveItemInArray(this.traitTypes, event.previousIndex, event.currentIndex);
   }
 }

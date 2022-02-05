@@ -5,6 +5,7 @@ import { GeneratorTableModule } from './components/generator-table/generator-tab
 import { GeneratorComponent } from './generator.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialModule } from '@vinny/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 export const collectionGeneratorRoutes: Route[] = [
@@ -12,7 +13,7 @@ export const collectionGeneratorRoutes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, GeneratorTableModule, FlexLayoutModule, MaterialModule],
+  imports: [CommonModule, RouterModule, GeneratorTableModule, FlexLayoutModule, MaterialModule, DragDropModule],
   declarations: [
     GeneratorComponent
   ],
