@@ -21,15 +21,18 @@
         </section>
         <div fxLayout="row" fxLayoutAlign="center">
           <button mat-stroked-button (click)="addColection()">
-            Add Collection
+            New Trait Type
           </button>
         </div>
-        <p>Options</p>
+        <div  *ngFor="let trait of traitTypes">
+                {{trait.type}}
+        </div>
       </div>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="outlet">
-        <vinny-generator-table>
+        <vinny-generator-table
+        >
           <div openButton class="button">
             <button
               *ngIf="!sidenav.opened"

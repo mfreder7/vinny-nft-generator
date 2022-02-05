@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Collections } from '@vinny/api-interfaces';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'vinny-generator-table',
@@ -13,9 +13,5 @@ export class GeneratorTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
-
-  addColection() {
-    console.log('addColection');
-  }
 
 }
