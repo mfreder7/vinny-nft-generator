@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GeneratorModule, collectionGeneratorRoutes } from '@vinny/collection-generator';
+import { NgClickOutsideModule } from 'ng-click-outside2';
 
 @NgModule({
   declarations: [AppComponent],
@@ -11,7 +12,8 @@ import { GeneratorModule, collectionGeneratorRoutes } from '@vinny/collection-ge
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([{ path: '', pathMatch: 'full', redirectTo: 'generator' }, { path: '', children: collectionGeneratorRoutes }], { initialNavigation: 'enabled' }),
-    GeneratorModule     // added
+    GeneratorModule,
+    NgClickOutsideModule
   ],
   bootstrap: [AppComponent],
 })

@@ -12,4 +12,7 @@ export class GeneratorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addColection() {
+    console.log('addColection');
+  }
 }

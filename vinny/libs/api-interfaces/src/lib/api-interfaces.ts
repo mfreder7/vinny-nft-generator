@@ -2,7 +2,7 @@ export interface Message {
   message: string;
 }
 
-export interface Trait{
+export interface Trait {
   name: string;
   weight: number;
   image: File;
@@ -13,7 +13,7 @@ export interface TraitTypes {
   traits: Trait[];
 }
 
-export interface CollectionInput {
+export interface Collections {
   traits: TraitTypes[];
 }
 
