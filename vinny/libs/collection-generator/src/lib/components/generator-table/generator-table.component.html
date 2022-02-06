@@ -7,19 +7,23 @@
           <input
             matInput
             formControlName="title"
-            placeholder="Trait Name"
+            placeholder="Trait name:"
             value="{{ trait.type }}"
           />
         </mat-form-field>
         <button mat-button color="secondary" (click)="saveTrait()">Save</button>
-        <button mat-button color="warn" (click)="saveTrait()">Delete Type</button>
+        <button mat-button color="warn" (click)="saveTrait()">
+          Delete Type
+        </button>
       </form>
     </div>
   </section>
   <section>
     <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
       <p class="table-title">Atributes (images)</p>
-      <span>You have {{trait.attributes.length}} files in the collection.</span>
+      <span
+        >You have {{ trait.attributes.length }} files in the collection.</span
+      >
       <div class="upload-button">
         <input
           type="file"
@@ -42,32 +46,61 @@
       </div>
     </div>
   </section>
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngFor="let attribute of trait.attributes ; let i = index " [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let attribute of trait.attributes; let i = index"
+      [expanded]="step === i"
+      (opened)="setStep(i)"
+      hideToggle
+    >
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
+        <div
+          class="panel-header"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <mat-panel-title fxFlex>
+            {{ attribute.name }}
+          </mat-panel-title>
+          <mat-panel-description class="panel-description">
+            Last eddited: {{ attribute.image.lastModified | date: 'medium' }}
+          </mat-panel-description>
+        </div>
       </mat-expansion-panel-header>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>First name</mat-label>
-        <input matInput>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Age</mat-label>
-        <input matInput type="number" min="1">
-      </mat-form-field>
-      <mat-action-row>
-        <button mat-button color="primary" (click)="nextStep()">Next</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  
-  </mat-accordion>
+      <ng-template matExpansionPanelContent>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+          <form [formGroup]="attributeForm">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+              <mat-form-field floatLabel="always">
+                <mat-label>Attr. name:</mat-label>
+                <input
+                  matInput
+                  formControlName="name"
+                  placeholder="{{ attribute.name }}"
+                  value="{{ attribute.name }}"
+                />
+              </mat-form-field>
 
+              <mat-form-field floatLabel="always">
+                <mat-label>Weight</mat-label>
+                <input
+                  matInput
+                  formControlName="weight"
+                  type="number"
+                  min="1"
+                  placeholder="{{ attribute.weight }}"
+                  value="{{ attribute.weight }}"
+                />
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep(attribute)">
+            Save and continue
+          </button>
+        </mat-action-row>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

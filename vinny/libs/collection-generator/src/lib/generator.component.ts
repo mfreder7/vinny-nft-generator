@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TraitType } from '@vinny/api-interfaces';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Component({
@@ -11,8 +11,7 @@ export class GeneratorComponent implements OnInit {
   selected = { trait: this.traitTypes[0], index: 0 };
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addColection() {
     this.traitTypes.push({
@@ -41,5 +40,4 @@ export class GeneratorComponent implements OnInit {
 
     console.log('save item: ', item);
   }
-
 }

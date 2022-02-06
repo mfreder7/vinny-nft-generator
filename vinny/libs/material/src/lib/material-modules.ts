@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -66,7 +66,8 @@ export const materialModules = [
   MatToolbarModule,
   MatTooltipModule,
   MatBadgeModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  FormsModule
 ];
 
 export const allMaterialModules = [...materialModules, MatIconModule];

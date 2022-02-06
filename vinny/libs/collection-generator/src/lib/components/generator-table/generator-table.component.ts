@@ -6,8 +6,8 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { TraitType } from '@vinny/api-interfaces';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Attribute, TraitType } from '@vinny/api-interfaces';
 
 @Component({
   selector: 'vinny-generator-table',
@@ -23,11 +23,19 @@ export class GeneratorTableComponent implements OnChanges {
   @Output() save = new EventEmitter<TraitType>();
   trait: TraitType = this.traitType.trait;
   titleForm: FormGroup;
+  attributeForm: FormGroup;
   step = 0;
+  name = '';
+  weight = 0;
 
   constructor(private formBuilder: FormBuilder) {
     this.titleForm = this.formBuilder.group({
       title: [`${this.trait.type}`],
+    });
+
+    this.attributeForm = this.formBuilder.group({
+      name: [''],
+      weight: [0],
     });
   }
 
@@ -39,6 +47,11 @@ export class GeneratorTableComponent implements OnChanges {
     this.trait.type = this.titleForm.value['title'];
     console.log('save trait: ', this.trait);
     this.save.emit(this.trait);
+  }
+
+  saveAttribute(attribute: Attribute) {
+    this.trait.attributes[this.step] = attribute;
+    this.saveTrait();
   }
 
   onFileSelected(event: Event) {
@@ -62,7 +75,10 @@ export class GeneratorTableComponent implements OnChanges {
     this.step = index;
   }
 
-  nextStep() {
+  nextStep(attribute: Attribute) {
+    attribute.name = this.attributeForm.value['name'];
+    attribute.weight = this.attributeForm.value['weight'];
+    this.saveAttribute(attribute);
     this.step++;
   }
 

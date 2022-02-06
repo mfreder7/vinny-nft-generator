@@ -40,7 +40,12 @@
     </mat-drawer>
     <mat-drawer-content>
       <div class="outlet">
-        <vinny-generator-table #table [traitType]="selected" (save)="saveItem($event)"> </vinny-generator-table>
+        <vinny-generator-table
+          #table
+          [traitType]="selected"
+          (save)="saveItem($event)"
+        >
+        </vinny-generator-table>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
