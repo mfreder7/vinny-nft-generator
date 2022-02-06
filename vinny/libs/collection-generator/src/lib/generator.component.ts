@@ -1,26 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { TraitTypes } from '@vinny/api-interfaces';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { TraitType } from '@vinny/api-interfaces';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { GeneratorTableComponent } from './components/generator-table/generator-table.component';
 @Component({
   selector: 'vinny-generator',
   templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.scss']
+  styleUrls: ['./generator.component.scss'],
 })
 export class GeneratorComponent implements OnInit {
-  traitTypes: TraitTypes[] = [{ type: 'Background', traits: [] }];
-
+  traitTypes: TraitType[] = [{ type: 'Background', traits: [] }];
+  selected = { trait: this.traitTypes[0], index: 0 };
+  @ViewChild('vinny-generator-table') table: any;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addColection() {
-    this.traitTypes.push({ type: `Trait ${this.traitTypes.length + 1}`, traits: [] });
+    this.traitTypes.push({
+      type: `Trait ${this.traitTypes.length + 1}`,
+      traits: [],
+    });
     console.log('Colection added.');
     console.log(this.traitTypes);
   }
 
-  drop(event: CdkDragDrop<TraitTypes[]>) {
+  drop(event: CdkDragDrop<TraitType[]>) {
+    if (this.selected.index === event.previousIndex) {
+      this.table.saveTrait();
+      this.selected.index = event.currentIndex;
+    }
     moveItemInArray(this.traitTypes, event.previousIndex, event.currentIndex);
+  }
+
+  select(index: number) {
+    console.log('trait type selected: ', this.traitTypes[index]);
+    this.selected = { trait: this.traitTypes[index], index };
+  }
+
+  saveItem(item: TraitType) {
+    this.selected.trait = item;
+    this.traitTypes[this.selected.index] = item;
+
+    console.log('save item: ', item);
   }
 }

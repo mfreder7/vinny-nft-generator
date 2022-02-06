@@ -8,12 +8,12 @@ export interface Atribute {
   image: File;
 }
 
-export interface TraitTypes {
+export interface TraitType {
   type: string;
   traits: Atribute[];
 }
 
 export interface Collections {
-  traitTypes: TraitTypes[];
+  traitTypes: TraitType[];
 }
 

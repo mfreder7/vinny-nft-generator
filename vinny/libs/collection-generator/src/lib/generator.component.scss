@@ -2,10 +2,10 @@
   width: 100%;
   height: 100%;
 }
-mat-sidenav-container {
+mat-drawer-container {
   width: 100%;
   height: 100%;
-  mat-sidenav {
+  mat-drawer {
     width: 20%;
   }
   .title-toggle {
@@ -23,18 +23,24 @@ mat-sidenav-container {
 
 .list-box {
   padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
+  border-bottom: solid 1px #46413b;
+  color: #46413b;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  cursor: move;
-  background: rgba(253, 253, 253, 0.973);
+  background: #f7f7f6;
   font-size: 14px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.list-box-content{
+    width:100%;
+    mat-icon{
+        color:#bebab4
+    }
 }
 
 .cdk-drag-preview {

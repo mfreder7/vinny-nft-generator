@@ -1,6 +1,6 @@
 <div class="generator">
-  <mat-sidenav-container class="options-container">
-    <mat-sidenav #sidenav opened mode="side">
+  <mat-drawer-container class="options-container">
+    <mat-drawer #sidenav opened mode="side">
       <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
         <section>
           <h3
@@ -9,14 +9,6 @@
             fxLayoutAlign="space-between center"
           >
             Collection Generator
-            <button
-              class="side-toggle-button"
-              *ngIf="sidenav.opened"
-              mat-icon-button
-              (click)="sidenav.toggle()"
-            >
-              <mat-icon>close</mat-icon>
-            </button>
           </h3>
         </section>
         <div fxLayout="row" fxLayoutAlign="center">
@@ -24,33 +16,31 @@
             New Trait Type
           </button>
         </div>
-        <div
-          cdkDropList
-          class="types-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="list-box" *ngFor="let trait of traitTypes" cdkDrag>
-            <div fxLayout="row">
-              {{ trait.type }}
+        <div cdkDropList class="types-list" (cdkDropListDropped)="drop($event)">
+          <div
+            class="list-box"
+            *ngFor="let trait of traitTypes; let i = index"
+            cdkDrag
+          >
+            <div
+              class="list-box-content"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              (click)="select(i)"
+            >
+              <span fxFlex>{{ trait.type }}</span>
+              <div>
+                <mat-icon>brightness_2</mat-icon>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
+    </mat-drawer>
+    <mat-drawer-content>
       <div class="outlet">
-        <vinny-generator-table>
-          <div openButton class="button">
-            <button
-              *ngIf="!sidenav.opened"
-              mat-icon-button
-              (click)="sidenav.toggle()"
-            >
-              <mat-icon>menu_open</mat-icon>
-            </button>
-          </div></vinny-generator-table
-        >
+        <vinny-generator-table [traitType]="selected" (save)="saveItem($event)"> </vinny-generator-table>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>
