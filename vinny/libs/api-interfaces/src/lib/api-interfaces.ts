@@ -13,7 +13,20 @@ export interface TraitType {
   attributes: Attribute[];
 }
 
+export interface TraitOutput {
+  type: string;
+  attributes: Attribute;
+}
+
 export interface Collections {
   traitTypes: TraitType[];
 }
 
+export interface CollectionOutput {
+  images: ImageOutput[];
+}
+
+export interface ImageOutput {
+  traits: TraitOutput[];
+  image: File;
+}

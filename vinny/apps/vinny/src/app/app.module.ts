@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GeneratorModule, collectionGeneratorRoutes } from '@vinny/collection-generator';
 import { NgClickOutsideModule } from 'ng-click-outside2';
+import { FileSaverModule } from 'ngx-filesaver';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,8 @@ import { NgClickOutsideModule } from 'ng-click-outside2';
     BrowserAnimationsModule,
     RouterModule.forRoot([{ path: '', pathMatch: 'full', redirectTo: 'generator' }, { path: '', children: collectionGeneratorRoutes }], { initialNavigation: 'enabled' }),
     GeneratorModule,
-    NgClickOutsideModule
+    NgClickOutsideModule,
+    FileSaverModule
   ],
   bootstrap: [AppComponent],
 })
