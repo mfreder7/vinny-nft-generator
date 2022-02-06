@@ -17,12 +17,13 @@ import { TraitType } from '@vinny/api-interfaces';
 })
 export class GeneratorTableComponent implements OnChanges {
   @Input() traitType: { trait: TraitType; index: number } = {
-    trait: { type: 'Background', traits: [] },
+    trait: { type: 'Background', attributes: [] },
     index: 0,
   };
   @Output() save = new EventEmitter<TraitType>();
   trait: TraitType = this.traitType.trait;
   titleForm: FormGroup;
+  step = 0;
 
   constructor(private formBuilder: FormBuilder) {
     this.titleForm = this.formBuilder.group({
@@ -51,6 +52,21 @@ export class GeneratorTableComponent implements OnChanges {
   }
 
   addFile(file: File | null) {
+    if (file) {
+      this.trait.attributes.push({ name: file.name, image: file, weight: 0 });
+    }
     console.log('add file', file);
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }

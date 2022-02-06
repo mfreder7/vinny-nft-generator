@@ -7,7 +7,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./generator.component.scss'],
 })
 export class GeneratorComponent implements OnInit {
-  traitTypes: TraitType[] = [{ type: 'Background', traits: [] }];
+  traitTypes: TraitType[] = [{ type: 'Background', attributes: [] }];
   selected = { trait: this.traitTypes[0], index: 0 };
   constructor() { }
 
@@ -17,7 +17,7 @@ export class GeneratorComponent implements OnInit {
   addColection() {
     this.traitTypes.push({
       type: `Trait ${this.traitTypes.length + 1}`,
-      traits: [],
+      attributes: [],
     });
     console.log('Colection added.');
     console.log(this.traitTypes);
@@ -41,4 +41,5 @@ export class GeneratorComponent implements OnInit {
 
     console.log('save item: ', item);
   }
+
 }

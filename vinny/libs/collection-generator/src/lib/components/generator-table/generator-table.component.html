@@ -11,13 +11,15 @@
             value="{{ trait.type }}"
           />
         </mat-form-field>
-        <button mat-button (click)="saveTrait()">Save</button>
+        <button mat-button color="secondary" (click)="saveTrait()">Save</button>
+        <button mat-button color="warn" (click)="saveTrait()">Delete Type</button>
       </form>
     </div>
   </section>
   <section>
     <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
       <p class="table-title">Atributes (images)</p>
+      <span>You have {{trait.attributes.length}} files in the collection.</span>
       <div class="upload-button">
         <input
           type="file"
@@ -40,4 +42,32 @@
       </div>
     </div>
   </section>
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel *ngFor="let attribute of trait.attributes ; let i = index " [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+  </mat-accordion>
+
 </div>

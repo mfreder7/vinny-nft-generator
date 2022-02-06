@@ -2,7 +2,7 @@ export interface Message {
   message: string;
 }
 
-export interface Atribute {
+export interface Attribute {
   name: string;
   weight: number;
   image: File;
@@ -10,7 +10,7 @@ export interface Atribute {
 
 export interface TraitType {
   type: string;
-  traits: Atribute[];
+  attributes: Attribute[];
 }
 
 export interface Collections {
