@@ -26,8 +26,6 @@ export class GeneratorComponent implements OnInit {
       type: `Trait ${this.traitTypes.length + 1}`,
       attributes: [],
     });
-    console.log('Colection added.');
-    console.log(this.traitTypes);
   }
 
   drop(event: CdkDragDrop<TraitType[]>) {
@@ -38,15 +36,12 @@ export class GeneratorComponent implements OnInit {
   }
 
   select(index: number) {
-    console.log('trait type selected: ', this.traitTypes[index]);
     this.selected = { trait: this.traitTypes[index], index };
   }
 
   saveItem(item: TraitType) {
     this.selected.trait = item;
     this.traitTypes[this.selected.index] = item;
-
-    console.log('save item: ', item);
   }
 
   async generateCollection() {
@@ -67,7 +62,6 @@ export class GeneratorComponent implements OnInit {
         console.log('selected: ', selected);
         return selected;
       });
-      console.log(`generated ${i}: `, generated);
       const image = await this.createImage(generated);
       images.push(image);
     }
@@ -81,7 +75,7 @@ export class GeneratorComponent implements OnInit {
     // convert file to image url
     const images: string[] = [];
     for (let i = 0; i < attrs.length; i++) {
-      const image = (await this.readFileAsync(attrs[i].image)) as string;
+      const image = (await this.readFileAsync(attrs[i].image)) as any;
       images.push(image);
     }
 
@@ -89,11 +83,11 @@ export class GeneratorComponent implements OnInit {
     return image;
   }
 
-  readFileAsync(file: File): any {
+  readFileAsync(file: File) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
 
-      reader.onload = () => {
+      reader.onload = (e) => {
         resolve(reader.result);
       };
 
@@ -103,15 +97,15 @@ export class GeneratorComponent implements OnInit {
     });
   }
 
-  async downloadCollection(images: string[], fileType = "png") {
+  async downloadCollection(images: any[], fileType = 'png') {
     const zip = new JSZip();
-    const img = zip.folder("images") as JSZip;
+    const img = zip.folder('images') as JSZip;
     images.forEach((image, index) => {
-      img.file(`${index}.${fileType}`, image, { binary: true });
+      img.file(`${index}.${fileType}`, image.split(',')[1], { base64: true });
     });
 
-    zip.generateAsync({ type: "blob" }).then(function (content: string | Blob) {
-      saveAs(content, "collection.zip");
+    zip.generateAsync({ type: 'blob' }).then(function (content: string | Blob) {
+      saveAs(content, 'collection.zip');
     });
   }
 }
