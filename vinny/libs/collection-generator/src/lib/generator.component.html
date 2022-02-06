@@ -2,7 +2,7 @@
   <mat-drawer-container class="options-container">
     <mat-drawer #sidenav opened mode="side">
       <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
-        <section>
+        <section fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
           <h3
             class="title-toggle"
             fxLayout="row"
@@ -10,6 +10,7 @@
           >
             Collection Generator
           </h3>
+          <sub>v0.01</sub>
         </section>
         <div fxLayout="row" fxLayoutAlign="center">
           <button mat-stroked-button (click)="addColection()">
@@ -39,7 +40,7 @@
     </mat-drawer>
     <mat-drawer-content>
       <div class="outlet">
-        <vinny-generator-table [traitType]="selected" (save)="saveItem($event)"> </vinny-generator-table>
+        <vinny-generator-table #table [traitType]="selected" (save)="saveItem($event)"> </vinny-generator-table>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>

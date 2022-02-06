@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { TraitType } from '@vinny/api-interfaces';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { GeneratorTableComponent } from './components/generator-table/generator-table.component';
 @Component({
   selector: 'vinny-generator',
   templateUrl: './generator.component.html',
@@ -10,10 +9,10 @@ import { GeneratorTableComponent } from './components/generator-table/generator-
 export class GeneratorComponent implements OnInit {
   traitTypes: TraitType[] = [{ type: 'Background', traits: [] }];
   selected = { trait: this.traitTypes[0], index: 0 };
-  @ViewChild('vinny-generator-table') table: any;
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   addColection() {
     this.traitTypes.push({
@@ -26,7 +25,6 @@ export class GeneratorComponent implements OnInit {
 
   drop(event: CdkDragDrop<TraitType[]>) {
     if (this.selected.index === event.previousIndex) {
-      this.table.saveTrait();
       this.selected.index = event.currentIndex;
     }
     moveItemInArray(this.traitTypes, event.previousIndex, event.currentIndex);

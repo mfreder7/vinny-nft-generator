@@ -1,7 +1,43 @@
-<div>{{traitType.trait.type}}
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="{{trait.type}}" >
-    </mat-form-field>
-  </div>
+<div>
+  <section>
+    <div>
+      <form class="form-wrapper" [formGroup]="titleForm">
+        <p class="title">Trait Information</p>
+        <mat-form-field floatLabel="always">
+          <input
+            matInput
+            formControlName="title"
+            placeholder="Trait Name"
+            value="{{ trait.type }}"
+          />
+        </mat-form-field>
+        <button mat-button (click)="saveTrait()">Save</button>
+      </form>
+    </div>
+  </section>
+  <section>
+    <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
+      <p class="table-title">Atributes (images)</p>
+      <div class="upload-button">
+        <input
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload
+          multiple
+        />
+
+        <div class="file-upload">
+          <button
+            mat-button
+            color="primary"
+            class="upload-btn"
+            (click)="fileUpload.click()"
+          >
+            Upload Images
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
