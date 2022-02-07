@@ -2,11 +2,12 @@
   "name": "vinny",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "ng": "nx",
-    "heroku-postbuild": "nx build $PROJECT_NAME --prod",
-    "start": "node apps/vinny/src/main",
-    "build": "nx build",
+    "start": "node dist/apps/api/main",
     "test": "nx test"
   },
   "private": true,
