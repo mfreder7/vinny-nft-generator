@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "heroku-postbuild": "nx build $PROJECT_NAME --prod",
-    "start": "nx run vinny:serve:production",
+    "start": "node apps/vinny/src/main",
     "build": "nx build",
     "test": "nx test"
   },
