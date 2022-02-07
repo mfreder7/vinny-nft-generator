@@ -6,7 +6,7 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Attribute, TraitType } from '@vinny/api-interfaces';
 
 @Component({
@@ -45,7 +45,6 @@ export class GeneratorTableComponent implements OnChanges {
 
   saveTrait() {
     this.trait.type = this.titleForm.value['title'];
-    console.log('save trait: ', this.trait);
     this.save.emit(this.trait);
   }
 
@@ -68,7 +67,6 @@ export class GeneratorTableComponent implements OnChanges {
     if (file) {
       this.trait.attributes.push({ name: file.name, image: file, weight: 0 });
     }
-    console.log('add file', file);
   }
 
   setStep(index: number) {

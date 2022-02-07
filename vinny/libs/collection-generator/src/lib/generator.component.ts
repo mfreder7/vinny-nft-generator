@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import weighted from 'weighted';
 import mergeImages from 'merge-images';
 import JSZip from 'jszip';
-import { FileSaverService } from 'ngx-filesaver';
 
 @Component({
   selector: 'vinny-generator',
@@ -45,9 +44,8 @@ export class GeneratorComponent implements OnInit {
   }
 
   async generateCollection() {
-    const generateCount = 100;
-    console.log('Generating collection using: ', this.traitTypes);
-    const images = [];
+    const generateCount = 20;
+    const images: any[] = [];
     for (let i = 0; i < generateCount; i++) {
       const generated: Attribute[] = this.traitTypes.map((trait) => {
         const attrs: Attribute[] = [];
@@ -59,11 +57,16 @@ export class GeneratorComponent implements OnInit {
         });
 
         const selected = weighted.select(attrs, weights);
-        console.log('selected: ', selected);
         return selected;
       });
       const image = await this.createImage(generated);
-      images.push(image);
+
+      // check if image exists already
+      if (!images.includes(image)) {
+        images.push(image);
+      };
+
+
     }
     this.downloadCollection(images);
 
