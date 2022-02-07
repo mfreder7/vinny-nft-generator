@@ -54,7 +54,7 @@ AppModule = tslib_1.__decorate([
     common_1.Module({
         imports: [
             serve_static_1.ServeStaticModule.forRoot({
-                rootPath: path_1.join('__dirname', '..', 'vinny'),
+                rootPath: path_1.join(__dirname, '..', 'vinny'),
                 exclude: ['/api/*'],
             }),
         ],
