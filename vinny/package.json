@@ -6,7 +6,7 @@
     "ng": "nx",
     "heroku-postbuild": "nx build $PROJECT_NAME --prod",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "npm install -g nx && npm install && nx run vinny:serve:production",
+    "start": "nx run vinny:serve:production",
     "build": "nx build",
     "test": "nx test"
   },
