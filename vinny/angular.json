@@ -68,11 +68,107 @@
       },
       "tags": []
     },
+    "collection-generator": {
+      "projectType": "library",
+      "root": "libs/collection-generator",
+      "sourceRoot": "libs/collection-generator/src",
+      "prefix": "vinny",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/collection-generator"],
+          "options": {
+            "jestConfig": "libs/collection-generator/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/collection-generator/src/**/*.ts",
+              "libs/collection-generator/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "components": {
+      "projectType": "library",
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
+      "prefix": "vinny",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/components"],
+          "options": {
+            "project": "libs/components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/components"],
+          "options": {
+            "jestConfig": "libs/components/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/components/src/**/*.ts",
+              "libs/components/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "material": {
+      "projectType": "library",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "vinny",
+      "preserveSymlinks": true,
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/material"],
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/material/src/**/*.ts",
+              "libs/material/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "vinny": {
       "projectType": "application",
       "root": "apps/vinny",
       "sourceRoot": "apps/vinny/src",
       "prefix": "vinny",
+      "preserveSymlinks": true,
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -85,7 +181,10 @@
             "tsConfig": "apps/vinny/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/vinny/src/favicon.ico", "apps/vinny/src/assets"],
-            "styles": ["apps/vinny/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/vinny/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

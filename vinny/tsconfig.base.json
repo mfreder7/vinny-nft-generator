@@ -7,15 +7,20 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "preserveSymlinks": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@vinny/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@vinny/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@vinny/collection-generator": ["libs/collection-generator/src/index.ts"],
+      "@vinny/components": ["libs/components/src/index.ts"],
+      "@vinny/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

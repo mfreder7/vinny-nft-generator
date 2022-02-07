@@ -1,0 +1,69 @@
+<div class="generator">
+  <mat-drawer-container class="options-container">
+    <mat-drawer #sidenav opened mode="side">
+      <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
+        <section fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
+          <h3
+            class="title-toggle"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            Collection Generator
+          </h3>
+          <sub>beta</sub>
+        </section>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button mat-stroked-button (click)="addColection()">
+            New Trait Type
+          </button>
+        </div>
+        <div cdkDropList class="types-list" (cdkDropListDropped)="drop($event)">
+          <div
+            class="list-box"
+            *ngFor="let trait of traitTypes; let i = index"
+            cdkDrag
+          >
+            <div
+              class="list-box-content"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              (click)="select(i)"
+            >
+              <span fxFlex>{{ trait.type }}</span>
+              <div>
+                <mat-icon>brightness_2</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+          <div class="quantity-text">Quantity:</div>
+          <input
+          class="quantity"
+          matInput
+          placeholder="Quantity:"
+          [(ngModel)]="quantity"
+          type="number"
+          min="1"
+          value="{{ quantity }}"
+          fxFlex="20"
+        />
+          <button class="generate-button" mat-stroked-button (click)="generateCollection()" >
+            Generate
+          </button>
+        </div>
+      </div>
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="outlet">
+        <vinny-generator-table
+          #table
+          [traitType]="selected"
+          (save)="saveItem($event)"
+        >
+        </vinny-generator-table>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

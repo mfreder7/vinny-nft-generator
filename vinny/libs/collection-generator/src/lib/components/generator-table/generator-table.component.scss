@@ -1,0 +1,30 @@
+.title {
+  font-weight: bold;
+}
+.table-title {
+  font-weight: bold;
+  margin: 14px;
+}
+.form-wrapper {
+  margin: 14px;
+}
+.upload-button {
+  .file-input {
+    display: none;
+  }
+  .file-upload {
+    button {
+      line-height: 30px;
+    }
+  }
+}
+.quantity {
+  width: 30px;
+}
+
+.panel-header {
+  width: 100%;
+  .panel-description {
+    text-align: right;
+  }
+}
