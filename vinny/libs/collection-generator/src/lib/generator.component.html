@@ -10,7 +10,7 @@
           >
             Collection Generator
           </h3>
-          <sub>v0.01</sub>
+          <sub>beta</sub>
         </section>
         <div fxLayout="row" fxLayoutAlign="center">
           <button mat-stroked-button (click)="addColection()">
@@ -36,8 +36,19 @@
             </div>
           </div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="center" >
-          <button class="generate-button" mat-stroked-button (click)="generateCollection()" fxFlex>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+          <div class="quantity-text">Quantity:</div>
+          <input
+          class="quantity"
+          matInput
+          placeholder="Quantity:"
+          [(ngModel)]="quantity"
+          type="number"
+          min="1"
+          value="{{ quantity }}"
+          fxFlex="20"
+        />
+          <button class="generate-button" mat-stroked-button (click)="generateCollection()" >
             Generate
           </button>
         </div>

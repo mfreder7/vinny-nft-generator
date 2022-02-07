@@ -15,6 +15,7 @@ import JSZip from 'jszip';
 export class GeneratorComponent implements OnInit {
   traitTypes: TraitType[] = [{ type: 'Background', attributes: [] }];
   selected = { trait: this.traitTypes[0], index: 0 };
+  quantity = 10;
 
   constructor(private http: HttpClient) { }
 
@@ -44,9 +45,8 @@ export class GeneratorComponent implements OnInit {
   }
 
   async generateCollection() {
-    const generateCount = 20;
     const images: any[] = [];
-    for (let i = 0; i < generateCount; i++) {
+    for (let i = 0; i < this.quantity; i++) {
       const generated: Attribute[] = this.traitTypes.map((trait) => {
         const attrs: Attribute[] = [];
         const weights: number[] = [];
@@ -69,13 +69,9 @@ export class GeneratorComponent implements OnInit {
 
     }
     this.downloadCollection(images);
-
-    console.log('GENERATING COMPLETED');
   }
 
   async createImage(attrs: Attribute[]): Promise<string> {
-    console.log('create image: ', attrs);
-    // convert file to image url
     const images: string[] = [];
     for (let i = 0; i < attrs.length; i++) {
       const image = (await this.readFileAsync(attrs[i].image)) as any;
