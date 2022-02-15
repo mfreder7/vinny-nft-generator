@@ -40,7 +40,13 @@ export class GeneratorTableComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
+    this.step = 0;
     this.trait = this.traitType.trait;
+    this.resetAttribute();
+  }
+
+  resetAttribute() {
+    this.attributeForm.reset();
   }
 
   saveTrait() {
@@ -77,10 +83,7 @@ export class GeneratorTableComponent implements OnChanges {
     attribute.name = this.attributeForm.value['name'];
     attribute.weight = this.attributeForm.value['weight'];
     this.saveAttribute(attribute);
+    this.resetAttribute();
     this.step++;
-  }
-
-  prevStep() {
-    this.step--;
   }
 }
